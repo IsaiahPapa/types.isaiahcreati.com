@@ -12,7 +12,5 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 16
-    - name: yarn install
-      run: yarn install
     - name: tsc
-      run: yarn tsc
+      run: npx tsc
