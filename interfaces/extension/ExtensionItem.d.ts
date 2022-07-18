@@ -1,4 +1,3 @@
-// Don't know if this was the intent, request changes if it wasn't, fixes transpilation error
 import { ExtensionFeature } from "./Feature";
 
 type AllowedRoles = "subscriber" | "moderator" | "broadcaster";
