@@ -1,2 +1,2 @@
 # types.isaiahcreati.com
- shared typed between frontend, backend, and extension.
+ shared types between frontend, backend, and extension.
