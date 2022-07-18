@@ -36,14 +36,14 @@ interface Modifier {
     target: Feature["id"];
     handler: Controllers | { name: "SomeOtherTypeOFModififer" };
 }
-
-[
-    {
-        type: "controller",
-        handler: {
-            name: "range",
-            min: 1,
-            max: 10,
-        },
-    },
-];
+// Commented out to fix statement not allowed error
+// [
+//     {
+//         type: "controller",
+//         handler: {
+//             name: "range",
+//             min: 1,
+//             max: 10,
+//         },
+//     },
+// ];

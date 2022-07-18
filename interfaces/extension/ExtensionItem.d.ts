@@ -1,4 +1,5 @@
-import { Feature } from "./Feature";
+// Don't know if this was the intent, request changes if it wasn't, fixes transpilation error
+import { ExtensionFeature } from "./Feature";
 
 type AllowedRoles = "subscriber" | "moderator" | "broadcaster";
 
@@ -9,5 +10,5 @@ export interface ExtensionItem {
     cooldown: number;
     sort_order: number;
     allowed: AllowedRoles[];
-    features: Feature[];
+    features: ExtensionFeature[];
 }
