@@ -36,14 +36,3 @@ interface Modifier {
     target: Feature["id"];
     handler: Controllers | { name: "SomeOtherTypeOFModififer" };
 }
-
-[
-    {
-        type: "controller",
-        handler: {
-            name: "range",
-            min: 1,
-            max: 10,
-        },
-    },
-];

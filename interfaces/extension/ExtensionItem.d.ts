@@ -1,4 +1,4 @@
-import { Feature } from "./Feature";
+import { ExtensionFeature } from "./Feature";
 
 type AllowedRoles = "subscriber" | "moderator" | "broadcaster";
 
@@ -9,5 +9,5 @@ export interface ExtensionItem {
     cooldown: number;
     sort_order: number;
     allowed: AllowedRoles[];
-    features: Feature[];
+    features: ExtensionFeature[];
 }
