@@ -20,6 +20,7 @@ import { TTSSettings } from "./settings/TTS";
 import { UpdateRewardSettings } from "./settings/UpdateReward";
 import { UpdateRewardV2Settings } from "./settings/UpdateRewardV2";
 import { VideoSettings } from "./settings/Video";
+import { VipFeatureSettings } from "./settings/VIP";
 import { WheelSpinnerSettings } from "./settings/WheelSpinner";
 
 /*
@@ -45,7 +46,6 @@ export type Feature =
     | TTSFeatureShared
     | SoundFeatureShared
     | VideoFeatureShared
-    | TimeoutFeatureShared
     | PunishmentFeatureShared
     | PlaySoundFeature
     | PlayVideoFeature
@@ -61,7 +61,8 @@ export type Feature =
     | RefundRewardFeature
     | SkipMediaFeature
     | OBSFeature
-    | CommercialFeature;
+    | CommercialFeature
+    | VipFeature;
 
 // export type ExtractFeature<T extends Feature["type"]> = Extract<Feature, { type: T }>;
 export type FeatureExtractSettings<T extends Feature["type"]> = Extract<Feature["settings"], { type: T }>;
@@ -116,7 +117,6 @@ export interface PollFeature {
     type: "poll";
     settings: PollSettings;
 }
-
 export interface RunCommandFeature {
     id: string;
     type: "runcommand";
@@ -175,4 +175,10 @@ export interface CommercialFeature {
     id: string;
     type: "commercial";
     settings: CommercialSettings;
+}
+
+export interface VipFeature {
+    id: string;
+    type: "vip";
+    settings: VipFeatureSettings;
 }

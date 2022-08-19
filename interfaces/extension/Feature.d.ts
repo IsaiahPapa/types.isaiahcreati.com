@@ -1,11 +1,12 @@
+import { TTSFeatureExtension } from "../features/extension/TTS";
+import { PunishmentFeatureShared } from "../features/shared/Punishment";
 import { SoundFeatureShared } from "../features/shared/Sound";
-import { TimeoutFeatureShared } from "../features/shared/Timeout";
-import { TTSFeatureShared } from "../features/shared/TTS";
+// import { TimeoutFeatureShared } from "../features/shared/Timeout";
 import { VideoFeatureShared } from "../features/shared/Video";
 
 export type ExtensionFeature =
-    | TTSFeatureShared
+    | TTSFeatureExtension
     | SoundFeatureShared
     | VideoFeatureShared
-    | TimeoutFeatureShared;
-export type ExtensionFeatureType = "tts" | "video" | "sound" | "timeout";
+    | PunishmentFeatureShared;
+// export type ExtensionFeatureType = "tts" | "video" | "sound" | "timeout";

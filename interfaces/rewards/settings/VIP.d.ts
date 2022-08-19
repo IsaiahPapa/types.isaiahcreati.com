@@ -1,13 +1,17 @@
-interface VipSettings {
+import { FeatureInterface } from "../../features/index";
+
+export interface VipFeatureSettings {
     mode: "add" | "remove";
     //TODO: Add a setting entry on the settings page to have people immune to VIP removal
-    target: "redeemer" | "redeemers_entry" | "random" | "chatter";
+    target: "redeemer" | "redeemers_entry" | "random" | "username";
     //Make better names, but..
     //Redeemer: Add/Remove the person that redeemed the reward
     //redeemers_entry: Add/Remove the chatter that he redeemer entered
     //random: Add random chatter currently in chat, or remove random VIP from the list of VIPS
     //Chatter: User must enter in username
     target_chatter: "";
+    //How long the vip add/remove should last for. Here for later use
+    duration: number;
 }
 
 interface ModeratorSettings {

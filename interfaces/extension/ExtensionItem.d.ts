@@ -7,7 +7,7 @@ export interface ExtensionItem {
     enabled: boolean;
     amount: number;
     cooldown: number;
-    sort_order: number;
+    lastEpoch: number;
     allowed: AllowedRoles[];
     features: ExtensionFeature[];
 }

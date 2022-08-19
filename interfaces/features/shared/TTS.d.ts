@@ -8,7 +8,7 @@ export interface TTSFeatureSharedSettings {
     actionVerb: string;
     filter: {
         remove_urls: boolean;
-        enabled: false;
+        enabled: boolean;
         wordList: string;
         placeholder: string;
     };

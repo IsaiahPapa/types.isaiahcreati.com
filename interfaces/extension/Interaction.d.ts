@@ -1,4 +1,4 @@
-type MediaInteraction = {
+export type MediaInteraction = {
     uuid: string;
     type: "sound" | "video";
     input: {
@@ -6,7 +6,7 @@ type MediaInteraction = {
     };
 };
 
-type TTSInteraction = {
+export type TTSInteraction = {
     uuid: string;
     type: "tts";
     input: {
@@ -15,18 +15,20 @@ type TTSInteraction = {
     };
 };
 
-type TimeoutInteraction = {
+export type PunishmentInteraction = {
     uuid: string;
-    type: "timeout";
+    type: "punishment";
     input: {
         username: string;
+        id: string;
     };
 };
 
-type DefaultInteraction = {
+export type DefaultInteraction = {
     uuid: string;
     type: "";
     input: {};
 };
 
-export type Interaction = TTSInteraction | MediaInteraction | TimeoutInteraction | DefaultInteraction;
+export type Interaction = TTSInteraction | MediaInteraction | PunishmentInteraction | DefaultInteraction;
+export type ExtractInteraction<T extends Interaction["type"]> = Extract<Interaction["input"], { type: T }>;
