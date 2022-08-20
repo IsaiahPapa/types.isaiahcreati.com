@@ -1,5 +1,5 @@
-import { RewardAddEvent } from "../../api/twitch/eventsub/ChannelPoints";
-import { ChannelPointReward } from "../../rewards/index";
+import type { RewardAddEvent } from "../../api/twitch/eventsub/ChannelPoints";
+import type { ChannelPointReward } from "../../rewards/index";
 
 export type ChannelPointRewardExtendedType = ChannelPointReward & {
     count?: number;

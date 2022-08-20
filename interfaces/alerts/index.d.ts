@@ -1,4 +1,4 @@
-import { MediaListItem } from "../Media";
+import type { MediaListItem } from "../Media";
 
 export interface SettingPosition {
     x: string; //px

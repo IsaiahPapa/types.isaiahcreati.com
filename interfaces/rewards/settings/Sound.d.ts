@@ -1,4 +1,4 @@
-import { MediaListItem } from "../../Media";
+import type { MediaListItem } from "../../Media";
 
 export interface SoundSettings {
     type: "single" | "multi" | "random" | "personal";

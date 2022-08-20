@@ -7,7 +7,7 @@
 //If they want to unban someone
 //call unban endpoint
 
-import { FeatureInterface } from "../index";
+import type { FeatureInterface } from "../index";
 
 export interface TimeoutFeatureSharedSettings {
     duration: number;

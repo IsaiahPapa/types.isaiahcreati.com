@@ -1,4 +1,4 @@
-import { FeatureInterface } from "../../features/index";
+import type { FeatureInterface } from "../../features/index";
 
 export interface VipFeatureSettings {
     mode: "add" | "remove";

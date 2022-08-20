@@ -1,14 +1,14 @@
-import { SoundFeatureShared } from "../shared/Sound";
-import { TimeoutFeatureShared } from "../shared/Timeout";
-import { TTSFeatureShared } from "../shared/TTS";
-import { VideoFeatureShared } from "../shared/Video";
-import { ChatMessageFeatureReward } from "./ChatMessage";
-import { ChatModeFeatureReward } from "./ChatMode";
-import { CommercialFeatureReward } from "./Commercial";
-import { PlaySoundFeatureReward } from "./PlaySound";
-import { PlayVideoFeatureReward } from "./PlayVideo";
-import { PollFeatureReward } from "./Poll";
-import { PredictionFeatureReward } from "./Prediction";
+import type { SoundFeatureShared } from "../shared/Sound";
+import type { TTSFeatureShared } from "../shared/TTS";
+import type { VideoFeatureShared } from "../shared/Video";
+import type { ChatMessageFeatureReward } from "./ChatMessage";
+import type { ChatModeFeatureReward } from "./ChatMode";
+import type { CommercialFeatureReward } from "./Commercial";
+import type { PlaySoundFeatureReward } from "./PlaySound";
+import type { PlayVideoFeatureReward } from "./PlayVideo";
+import type { PollFeatureReward } from "./Poll";
+import type { TimeoutFeatureShared } from "../shared/Timeout";
+import type { PredictionFeatureReward } from "./Prediction";
 
 export type RewardFeatureType =
     | PlaySoundFeatureReward

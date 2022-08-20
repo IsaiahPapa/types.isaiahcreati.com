@@ -1,4 +1,4 @@
-import { SettingPosition, SettingSize } from "../../alerts/index";
+import type { SettingPosition, SettingSize } from "../../alerts/index";
 
 interface WheelSpinnerListItem {
     id: string,

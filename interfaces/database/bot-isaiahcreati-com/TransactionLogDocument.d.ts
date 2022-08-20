@@ -1,4 +1,4 @@
-import { ExtensionAlertPayload } from "../../api/extension/index";
+import type { ExtensionAlertPayload } from "../../api/extension/index";
 
 interface TransactionLogDocument extends ExtensionAlertPayload {
     _id: string;

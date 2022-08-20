@@ -1,4 +1,4 @@
-import { TwitchAPIImage } from "../../../rewards/index";
+import type { TwitchAPIImage } from "../../../rewards/index";
 
 type RewardRedemptionStatusType = "unknown" | "unfulfilled" | "fulfilled" | "canceled";
 

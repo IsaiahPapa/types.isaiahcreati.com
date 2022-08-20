@@ -1,4 +1,4 @@
-import { FeatureInterface } from "../index";
+import type { FeatureInterface } from "../index";
 
 interface ChatMessageSettingsCustom {
     preset: "custom";

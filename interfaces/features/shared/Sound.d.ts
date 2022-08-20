@@ -1,5 +1,5 @@
-import { MediaListItem } from "../../Media";
-import { FeatureInterface } from "../index";
+import type { MediaListItem } from "../../Media";
+import type { FeatureInterface } from "../index";
 
 export interface SoundFeatureSharedSettings {
     type: "single" | "multi" | "random" | "personal";

@@ -1,4 +1,4 @@
-import { ExtensionFeature } from "./Feature";
+import type { ExtensionFeature } from "./Feature";
 
 type AllowedRoles = "subscriber" | "moderator" | "broadcaster";
 

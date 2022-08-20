@@ -1,4 +1,4 @@
-import { Feature } from "../../rewards/Feature";
+import type { Feature } from "../../rewards/Feature";
 
 export interface FeaturesDocument {
     uuid4: string;

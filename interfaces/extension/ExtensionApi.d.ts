@@ -1,5 +1,5 @@
-import ExtensionsDocument from "../database/bot-isaiahcreati-com/ExtensionsDocument";
-import { ExtensionItem } from "./ExtensionItem";
+import type ExtensionsDocument from "../database/bot-isaiahcreati-com/ExtensionsDocument";
+import type { ExtensionItem } from "./ExtensionItem";
 
 export type AtLeastOne<T, U = { [K in keyof T]: Pick<T, K> }> = Partial<T> & U[keyof U];
 

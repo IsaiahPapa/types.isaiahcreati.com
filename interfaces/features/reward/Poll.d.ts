@@ -1,4 +1,4 @@
-import { FeatureInterface } from "../index";
+import type { FeatureInterface } from "../index";
 
 /*
  * Prediction Types

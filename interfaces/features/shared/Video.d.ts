@@ -1,6 +1,6 @@
-import { SettingPosition, SettingSize } from "../../alerts/index";
-import { MediaListItem } from "../../Media";
-import { FeatureInterface } from "../index";
+import type { SettingPosition, SettingSize } from "../../alerts/index";
+import type { MediaListItem } from "../../Media";
+import type { FeatureInterface } from "../index";
 
 export interface VideoFeatureSharedSettings {
     type: "single" | "multi" | "random" | "personal";

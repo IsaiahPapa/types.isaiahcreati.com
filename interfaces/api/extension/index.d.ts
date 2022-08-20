@@ -1,4 +1,4 @@
-import { Interaction } from "../../extension/Interaction";
+import type { Interaction } from "../../extension/Interaction";
 
 export type ExtensionProduct = {
     domainId: string;

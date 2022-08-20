@@ -1,7 +1,7 @@
-import { SoundFeatureShared } from "./Sound";
-import { TimeoutFeatureShared } from "./Timeout";
-import { TTSFeatureShared } from "./TTS";
-import { VideoFeatureShared } from "./Video";
+import type { SoundFeatureShared } from "./Sound";
+import type { TimeoutFeatureShared } from "./Timeout";
+import type { TTSFeatureShared } from "./TTS";
+import type { VideoFeatureShared } from "./Video";
 
 export type SharedFeatureType =
     | SoundFeatureShared

@@ -1,5 +1,5 @@
-import { FeatureInterface } from "../index";
-import { SettingPosition, SettingSize } from "../../alerts/index";
+import type { FeatureInterface } from "../index";
+import type { SettingPosition, SettingSize } from "../../alerts/index";
 
 export interface PlayVideoFeatureRewardSettings {
     type: string;

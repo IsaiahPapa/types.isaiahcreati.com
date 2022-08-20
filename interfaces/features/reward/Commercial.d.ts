@@ -1,4 +1,4 @@
-import { FeatureInterface } from "../index";
+import type { FeatureInterface } from "../index";
 
 export interface CommercialFeatureRewardSettings {
     length: 30 | 60 | 90 | 120 | 150 | 180;

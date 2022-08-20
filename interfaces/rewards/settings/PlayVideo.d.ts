@@ -1,4 +1,4 @@
-import { SettingPosition, SettingSize } from "../../alerts/index";
+import type { SettingPosition, SettingSize } from "../../alerts/index";
 
 export interface PlayVideoSettingsDepreciated {
     type: string,
