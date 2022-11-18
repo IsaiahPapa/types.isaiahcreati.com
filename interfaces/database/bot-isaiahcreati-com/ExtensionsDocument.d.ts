@@ -1,5 +1,5 @@
 import { ExtensionItem } from "../../extension/ExtensionItem";
-type ExtensionThemes = "blue" | "red" | "orange" | "purple";
+type ExtensionThemes = "blue" | "red" | "orange" | "purple" | "green";
 export interface ExtensionsDocument {
     uuid4: string;
     list: ExtensionItem[];
