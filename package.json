@@ -1,7 +1,8 @@
 {
   "name": "types.isaiahcreati.com",
   "scripts": {
-    "test": "tsc --noEmit --pretty --target es5"
+    "test": "tsc --noEmit --pretty --target es5",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "husky": "^8.0.1",
