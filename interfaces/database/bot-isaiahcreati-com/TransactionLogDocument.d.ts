@@ -1,7 +1,7 @@
 import { ExtensionAlertPayload } from "../../api/extension/index";
 
 interface TransactionLogDocument extends ExtensionAlertPayload {
-    _id: string;
+    _id?: string;
 
     // receipt: string;
     // time: string;

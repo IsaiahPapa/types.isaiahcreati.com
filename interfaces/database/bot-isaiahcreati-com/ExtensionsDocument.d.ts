@@ -1,3 +1,4 @@
+import { SettingPosition } from "../../alerts/index";
 import { ExtensionItem } from "../../extension/ExtensionItem";
 type ExtensionThemes = "blue" | "red" | "orange" | "purple" | "green";
 export interface ExtensionsDocument {
@@ -8,6 +9,12 @@ export interface ExtensionsDocument {
     whitelist?: string[];
     cooldown?: number;
     lastEpoch?: number;
+    notification?: {
+        position: {
+            x: number;
+            y: number;
+        };
+    };
 }
 
 export default ExtensionsDocument;

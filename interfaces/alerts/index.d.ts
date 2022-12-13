@@ -1,4 +1,9 @@
+import ExtensionsDocument from "../database/bot-isaiahcreati-com/ExtensionsDocument";
+import { Interaction } from "../extension/Interaction";
+import { PunishmentFeatureSharedSettings } from "../features/shared/Punishment";
 import { MediaListItem } from "../Media";
+import { PlaySoundSettingsDepreciated } from "../rewards/settings/PlaySound";
+import { PlayVideoSettingsDepreciated } from "../rewards/settings/PlayVideo";
 
 export interface SettingPosition {
     x: string; //px
@@ -9,59 +14,62 @@ export interface SettingSize {
     h: string; //px
 }
 
-export interface AlertPayload {
-    type: string;
-    version: string;
-    data: any;
-    // [key: string]: any;
-}
+//Feature payload Data
 
-export interface AlertPayloadTts extends AlertPayload {
+export interface AlertPayloadTtsRewards {
     type: "tts";
-    data: {
+    settings: {
         volume: number;
         voice: string;
         message: string;
     };
 }
 
-export interface AlertPayloadTtsExtension extends AlertPayload {
-    type: "tts_ext";
-    data: {
+export interface AlertPayloadTtsExtension {
+    type: "tts";
+    settings: {
         transactionId: string;
         volume: number;
     };
 }
 
-export interface AlertPayloadSound extends AlertPayload {
+export interface AlertPayloadSound {
     type: "sound";
-    data: {
+    settings: {
         queue: boolean;
         media: MediaListItem;
     };
 }
 
-export interface AlertPayloadVideo extends AlertPayload {
+export interface AlertPayloadVideo {
     type: "video";
-    data: {
+    settings: {
         size: SettingSize;
         position: SettingPosition;
         media: MediaListItem;
     };
 }
 
-export interface AlertPayloadPlaySound extends AlertPayload {
+export interface AlertPayloadPlaySound {
     type: "playsound";
-    settings: any;
+    data: {
+        file_url: string;
+        volume: string | number;
+    };
+    settings: PlaySoundSettingsDepreciated;
 }
-export interface AlertPayloadPlayVideo extends AlertPayload {
+export interface AlertPayloadPlayVideo {
     type: "playvideo";
-    settings: any;
+    data: {
+        file_url: string;
+        volume: string | number;
+    };
+    settings: PlayVideoSettingsDepreciated;
 }
 
-export interface AlertPayloadShowEmote extends AlertPayload {
+export interface AlertPayloadShowEmote {
     type: "showemote";
-    data: {
+    settings: {
         emotes: any[];
         limit: number;
         showtime: number;
@@ -69,11 +77,42 @@ export interface AlertPayloadShowEmote extends AlertPayload {
     };
 }
 
-export type AlertPayloads =
-    | AlertPayloadTts
-    | AlertPayloadTtsExtension
-    | AlertPayloadSound
-    | AlertPayloadVideo
-    | AlertPayloadPlayVideo
-    | AlertPayloadPlaySound
-    | AlertPayloadShowEmote;
+export interface AlertPayloadPunishment {
+    type: "punishment";
+    settings: {
+        duration: PunishmentFeatureSharedSettings["duration"];
+        mode: PunishmentFeatureSharedSettings["mode"];
+    };
+}
+
+//Actual payloads
+
+export interface DefaultAlertPayload {
+    version: string;
+    module: "rewards" | "extension";
+}
+
+export interface AlertPayloadRewards extends DefaultAlertPayload {
+    version: string;
+    module: "rewards";
+    data:
+        | AlertPayloadTtsRewards
+        | AlertPayloadSound
+        | AlertPayloadVideo
+        | AlertPayloadPlayVideo
+        | AlertPayloadPlaySound
+        | AlertPayloadShowEmote;
+    info: {};
+}
+export interface AlertPayloadExtension extends DefaultAlertPayload {
+    version: string;
+    module: "extension";
+    data: AlertPayloadTtsExtension | AlertPayloadSound | AlertPayloadVideo | AlertPayloadPunishment;
+    info: {
+        username: string;
+        amount: number;
+        interaction: Interaction;
+        theme: ExtensionsDocument["theme"];
+        notification: ExtensionsDocument["notification"];
+    };
+}

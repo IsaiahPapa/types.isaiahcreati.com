@@ -1,9 +1,9 @@
 export interface UserDocument {
     _id: string;
     rank: string;
-    isStreamer: boolean;
-    botConnected: boolean;
-    eventSubConnected: boolean;
+    isStreamer?: boolean;
+    botConnected?: boolean;
+    eventSubConnected?: boolean;
     aws: { isUsingAws: boolean; access_key_id: string; access_key_secret: string };
     settings: {
         filter: string[];
@@ -13,12 +13,12 @@ export interface UserDocument {
         id: string;
         login: string;
         display_name: string;
-        type: string;
-        broadcaster_type: string;
+        type: "" | "admin" | "global_mod" | "staff";
+        broadcaster_type: "" | "affiliate" | "partner";
         description: string;
         profile_image_url: string;
         offline_image_url: string;
-        view_count: number;
+        view_count?: number;
         email: string;
         created_at: string | Date;
         access_token: string;
@@ -40,7 +40,7 @@ export interface UserDocument {
         customer: string;
         subscription: string;
     };
-    live: boolean;
+    live?: boolean;
     tts?: {
         monthy_usage: { [MonthYear: string]: { used_chars: number } };
     };
