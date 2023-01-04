@@ -21,6 +21,7 @@ export type PunishmentInteraction = {
     input: {
         username: string;
         id: string;
+        duration: number;
     };
 };
 
