@@ -5,6 +5,8 @@ export interface PunishmentFeatureSharedSettings {
     duration: number;
     target: "redeemer" | "text" | "username" | "randomChatter";
     target_username: "";
+    // rank?: Array<"vip" | "tier1" | "tier2" | "tier3">;
+    rank?: "vip" | "tier1" | "tier2" | "tier3" | "sub";
 }
 
 export interface PunishmentFeatureShared extends FeatureInterface {

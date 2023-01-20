@@ -51,4 +51,5 @@ export type ExtensionAlertPayload = {
         id: string;
     };
     user: ExtensionTransactionPostBody["user"];
+    execute: Array<"overlay_alert" | "chat_alert" | "logic" | "all">;
 };
