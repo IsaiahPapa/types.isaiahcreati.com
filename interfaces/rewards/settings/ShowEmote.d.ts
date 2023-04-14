@@ -1,6 +1,6 @@
 export interface ShowEmoteSettings {
     showtime: number; //ms
     fadetime: number; //ms
-    size: string; //in pixels
+    size: string | number; //in pixels
     limit: number;
 }

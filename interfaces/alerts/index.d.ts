@@ -74,6 +74,7 @@ export interface AlertPayloadShowEmote {
         limit: number;
         showtime: number;
         fadetime: number;
+        size: number;
     };
 }
 
