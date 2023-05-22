@@ -44,5 +44,7 @@ export interface UserDocument {
     tts?: {
         monthy_usage: { [MonthYear: string]: { used_chars: number } };
     };
+    welcomeOnboardingComplete?: boolean;
+    extensionOnboardingComplete?: boolean;
 }
 export default UserDocument;

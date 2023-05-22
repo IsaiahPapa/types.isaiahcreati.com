@@ -62,7 +62,8 @@ export type Feature =
     | SkipMediaFeature
     | OBSFeature
     | CommercialFeature
-    | VipFeature;
+    | VipFeature
+    | PopFeature;
 
 // export type ExtractFeature<T extends Feature["type"]> = Extract<Feature, { type: T }>;
 export type FeatureExtractSettings<T extends Feature["type"]> = Extract<Feature["settings"], { type: T }>;
@@ -181,4 +182,14 @@ export interface VipFeature {
     id: string;
     type: "vip";
     settings: VipFeatureSettings;
+}
+
+export interface PopFeature {
+    id: string;
+    type: "pop";
+    settings: {
+        //chosen sticker name
+        name: string;
+        size: string;
+    };
 }

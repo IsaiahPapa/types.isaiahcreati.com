@@ -1,3 +1,4 @@
+import { RandomMediaFeatureExtension } from "../features/extension/RandomMedia";
 import { TTSFeatureExtension } from "../features/extension/TTS";
 import { PunishmentFeatureShared } from "../features/shared/Punishment";
 import { SoundFeatureShared } from "../features/shared/Sound";
@@ -8,5 +9,6 @@ export type ExtensionFeature =
     | TTSFeatureExtension
     | SoundFeatureShared
     | VideoFeatureShared
-    | PunishmentFeatureShared;
+    | PunishmentFeatureShared
+    | RandomMediaFeatureExtension;
 // export type ExtensionFeatureType = "tts" | "video" | "sound" | "timeout";
