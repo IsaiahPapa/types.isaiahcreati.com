@@ -8,6 +8,7 @@ export interface ExtensionItem {
     amount: number;
     cooldown: number;
     lastEpoch: number;
+    title?: string;
     allowed: AllowedRoles[];
     features: ExtensionFeature[];
 }
