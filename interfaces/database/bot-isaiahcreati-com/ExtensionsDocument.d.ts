@@ -17,6 +17,7 @@ export interface ExtensionsDocument {
     cooldown?: number;
     lastEpoch?: number;
     notification?: {
+        hide?: boolean,
         position: {
             x: number;
             y: number;
