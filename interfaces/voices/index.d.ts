@@ -12,6 +12,7 @@ export type PollyVoice = {
 
 export type AiVoiceSchema = {
     uuid?: string;
+    twitchId?: string;
     type: "ai";
     model_id: string;
     name: string;

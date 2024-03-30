@@ -4,7 +4,14 @@ import { ExtensionItem } from "./ExtensionItem";
 export type AtLeastOne<T, U = { [K in keyof T]: Pick<T, K> }> = Partial<T> & U[keyof U];
 
 interface ExtensionPubSubMessageInterface {
-    type: "ITEM_DELETE" | "ITEM_UPDATE" | "ITEM_CREATE" | "THEME_CHANGE" | "MAINTENANCE";
+    type:
+        | "ITEM_DELETE"
+        | "ITEM_UPDATE"
+        | "ITEM_CREATE"
+        | "THEME_CHANGE"
+        | "MAINTENANCE"
+        | "FIRESALE.START"
+        | "FIRESALE.STOP";
 }
 
 export interface ItemCreatePubSubMessage extends ExtensionPubSubMessageInterface {
@@ -30,10 +37,21 @@ export interface MaintenanceChangePubSubMessage extends ExtensionPubSubMessageIn
     type: "MAINTENANCE";
     isEnabled: boolean;
 }
+export interface FiresaleStartPubSubMessage extends ExtensionPubSubMessageInterface {
+    type: "FIRESALE.START";
+    durationSeconds: number;
+    discountPercentage: number;
+}
+
+export interface FiresaleStopPubSubMessage extends ExtensionPubSubMessageInterface {
+    type: "FIRESALE.STOP";
+}
 
 export type ExtensionPubSubMessage =
     | ItemDeletePubSubMessage
     | ItemUpdatePubSubMessage
     | ItemCreatePubSubMessage
     | ThemeChangePubSubMessage
-    | MaintenanceChangePubSubMessage;
+    | MaintenanceChangePubSubMessage
+    | FiresaleStartPubSubMessage
+    | FiresaleStopPubSubMessage;

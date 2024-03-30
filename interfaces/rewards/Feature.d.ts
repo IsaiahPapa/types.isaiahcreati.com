@@ -1,3 +1,4 @@
+import { MinecraftIntegrationFeatureSettings } from "../features/shared/Minecraft";
 import { PunishmentFeatureShared } from "../features/shared/Punishment";
 import { SoundFeatureShared } from "../features/shared/Sound";
 import { TimeoutFeatureShared } from "../features/shared/Timeout";
@@ -63,7 +64,9 @@ export type Feature =
     | OBSFeature
     | CommercialFeature
     | VipFeature
-    | PopFeature;
+    | PopFeature
+    | ActivateExtensionFiresaleRewardsFeature
+    | MinecraftIntegrationFeature;
 
 // export type ExtractFeature<T extends Feature["type"]> = Extract<Feature, { type: T }>;
 export type FeatureExtractSettings<T extends Feature["type"]> = Extract<Feature["settings"], { type: T }>;
@@ -184,6 +187,12 @@ export interface VipFeature {
     settings: VipFeatureSettings;
 }
 
+export interface ActivateExtensionFiresaleRewardsFeature {
+    id: string;
+    type: "firesaleExtension";
+    settings: {};
+}
+
 export interface PopFeature {
     id: string;
     type: "pop";
@@ -192,4 +201,12 @@ export interface PopFeature {
         name: string;
         size: string;
     };
+}
+
+// Define a mapping from action to detail type
+
+export interface MinecraftIntegrationFeature {
+    id: string;
+    type: "integration:minecraft";
+    settings: MinecraftIntegrationFeatureSettings;
 }

@@ -1,5 +1,6 @@
 import { SettingPosition } from "../../alerts/index";
 import { ExtensionItem } from "../../extension/ExtensionItem";
+import { ExtensionFeature } from "../../extension/Feature";
 type ExtensionThemes = "blue" | "red" | "orange" | "purple" | "green";
 
 export type PunishedChatter = {
@@ -15,9 +16,19 @@ export interface ExtensionsDocument {
     sortOrder?: ExtensionItem["uuid"][];
     whitelist?: string[];
     cooldown?: number;
-    lastEpoch?: number;
+    
+    // lastEpoch?: number;
+    firesale?: {
+        lastEpochSeconds?: number;
+        durationSeconds: number;
+        discountPercent: number; //between 0-100
+        viewerParticipationThreshold: number;
+        exemptItemIds: string[];
+        exemptUserIds: string[];
+        exemptFeatures: Exclude<ExtensionFeature["type"], "firesale">[];
+    };
     notification?: {
-        hide?: boolean,
+        hide?: boolean;
         position: {
             x: number;
             y: number;

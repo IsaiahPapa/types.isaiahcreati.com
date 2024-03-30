@@ -1,9 +1,27 @@
+export interface DiscordAccount {
+    id: string;
+    username: string;
+    discriminator: string;
+    avatarHash: string;
+    email: string;
+    locale: string;
+    mfaEnabled: boolean;
+    imageUrl: string;
+    provider: string;
+    accessToken: string;
+    refreshToken: string;
+    accessTokenExpiresIn: number;
+    scope: string;
+}
+
 export interface UserDocument {
     _id: string;
     rank: string;
     isStreamer?: boolean;
     botConnected?: boolean;
     eventSubConnected?: boolean;
+    DiscordWelcomeMessageSent?: boolean;
+    scopes?: string[];
     aws: { isUsingAws: boolean; access_key_id: string; access_key_secret: string };
     settings: {
         filter: string[];
@@ -23,7 +41,9 @@ export interface UserDocument {
         created_at: string | Date;
         access_token: string;
         refresh_token: string;
+        follow_count?: number;
     };
+    discord?: DiscordAccount;
     stripe: {
         status: string;
         paid: boolean;
@@ -46,5 +66,7 @@ export interface UserDocument {
     };
     welcomeOnboardingComplete?: boolean;
     extensionOnboardingComplete?: boolean;
+    subscriptions?: { type: string; status: string }[];
+    lastLogin?: number;
 }
 export default UserDocument;

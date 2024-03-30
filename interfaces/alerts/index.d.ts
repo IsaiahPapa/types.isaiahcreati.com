@@ -1,5 +1,7 @@
 import ExtensionsDocument from "../database/bot-isaiahcreati-com/ExtensionsDocument";
 import { Interaction } from "../extension/Interaction";
+import { RandomMediaFeatureExtensionSettings } from "../features/extension/RandomMedia";
+import { MinecraftIntegrationFeatureSettings } from "../features/shared/Minecraft";
 import { PunishmentFeatureSharedSettings } from "../features/shared/Punishment";
 import { MediaListItem } from "../Media";
 import { PlaySoundSettingsDepreciated } from "../rewards/settings/PlaySound";
@@ -86,6 +88,27 @@ export interface AlertPayloadPunishment {
     };
 }
 
+export interface AlertPayloadRandomMedia {
+    type: "randomMedia";
+    settings: {
+        //the shortID of the random media item
+        shortId: string;
+    };
+}
+
+export interface AlertPayloadFiresale {
+    type: "firesale";
+    settings: {
+        duration: number;
+        discount: number;
+    };
+}
+
+export interface AlertPayloadMinecraft {
+    type: "integration:minecraft";
+    settings: MinecraftIntegrationFeatureSettings
+}
+
 //Actual payloads
 
 export interface DefaultAlertPayload {
@@ -102,13 +125,20 @@ export interface AlertPayloadRewards extends DefaultAlertPayload {
         | AlertPayloadVideo
         | AlertPayloadPlayVideo
         | AlertPayloadPlaySound
-        | AlertPayloadShowEmote;
+        | AlertPayloadShowEmote
+        | AlertPayloadMinecraft;
     info: {};
 }
 export interface AlertPayloadExtension extends DefaultAlertPayload {
     version: string;
     module: "extension";
-    data: AlertPayloadTtsExtension | AlertPayloadSound | AlertPayloadVideo | AlertPayloadPunishment;
+    data:
+        | AlertPayloadTtsExtension
+        | AlertPayloadSound
+        | AlertPayloadVideo
+        | AlertPayloadPunishment
+        | AlertPayloadRandomMedia
+        | AlertPayloadFiresale;
     info: {
         username: string;
         amount: number;
