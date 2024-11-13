@@ -24,6 +24,7 @@ export interface AlertPayloadTtsRewards {
         volume: number;
         voice: string;
         message: string;
+        modelId?: string;
     };
 }
 

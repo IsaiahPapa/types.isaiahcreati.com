@@ -17,7 +17,7 @@ export interface ExtensionsDocument {
     whitelist?: string[];
     cooldown?: number;
     
-    // lastEpoch?: number;
+    lastEpoch?: number;
     firesale?: {
         lastEpochSeconds?: number;
         durationSeconds: number;

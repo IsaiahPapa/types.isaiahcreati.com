@@ -11,6 +11,11 @@ export interface Media {
     type: "sound" | "video";
     tags: string[];
     duration: number;
+    translation?: {
+        detected_language_code: string
+        translated: boolean
+        text_en: string
+    };
 }
 
 export interface MediaListItem {

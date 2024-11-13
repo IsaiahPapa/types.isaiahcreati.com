@@ -10,6 +10,7 @@ export type TTSInteraction = {
     uuid: string;
     type: "tts";
     input: {
+        modelId?: string;
         voice: string;
         message: string;
     };
