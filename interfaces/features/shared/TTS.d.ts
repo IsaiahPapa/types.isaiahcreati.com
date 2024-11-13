@@ -6,6 +6,7 @@ export interface TTSFeatureSharedSettings {
     volume: number;
     readUsername: boolean;
     actionVerb: string;
+    modelId?: string;
     filter: {
         remove_urls: boolean;
         enabled: boolean;
