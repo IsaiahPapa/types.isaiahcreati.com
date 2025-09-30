@@ -2,8 +2,10 @@ import ExtensionsDocument from "../database/bot-isaiahcreati-com/ExtensionsDocum
 import { Interaction } from "../extension/Interaction";
 import { RandomMediaFeatureExtensionSettings } from "../features/extension/RandomMedia";
 import { MinecraftIntegrationFeatureSettings } from "../features/shared/Minecraft";
+import { PopFeatureSettings } from "../features/shared/Pops";
 import { PunishmentFeatureSharedSettings } from "../features/shared/Punishment";
 import { MediaListItem } from "../Media";
+import { ChannelPointReward } from "../rewards/index";
 import { PlaySoundSettingsDepreciated } from "../rewards/settings/PlaySound";
 import { PlayVideoSettingsDepreciated } from "../rewards/settings/PlayVideo";
 
@@ -110,6 +112,11 @@ export interface AlertPayloadMinecraft {
     settings: MinecraftIntegrationFeatureSettings
 }
 
+export interface AlertPayloadPop {
+    type: "pop"
+    settings: PopFeatureSettings
+}
+
 //Actual payloads
 
 export interface DefaultAlertPayload {
@@ -127,8 +134,12 @@ export interface AlertPayloadRewards extends DefaultAlertPayload {
         | AlertPayloadPlayVideo
         | AlertPayloadPlaySound
         | AlertPayloadShowEmote
-        | AlertPayloadMinecraft;
-    info: {};
+        | AlertPayloadMinecraft
+        | AlertPayloadPop;
+    info: {
+        reward: ChannelPointReward
+        redeemer: {name: string}
+    };
 }
 export interface AlertPayloadExtension extends DefaultAlertPayload {
     version: string;
@@ -139,7 +150,8 @@ export interface AlertPayloadExtension extends DefaultAlertPayload {
         | AlertPayloadVideo
         | AlertPayloadPunishment
         | AlertPayloadRandomMedia
-        | AlertPayloadFiresale;
+        | AlertPayloadFiresale
+        | AlertPayloadPop;
     info: {
         username: string;
         amount: number;

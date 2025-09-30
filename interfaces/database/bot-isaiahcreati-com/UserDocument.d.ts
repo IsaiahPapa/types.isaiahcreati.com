@@ -18,6 +18,11 @@ export interface UserDocument {
     _id: string;
     rank: string;
     isStreamer?: boolean;
+    banned?: {
+        lifted: boolean; //Were they given a second chance
+        reason: string;
+        dateEpoch: number
+    }
     botConnected?: boolean;
     eventSubConnected?: boolean;
     DiscordWelcomeMessageSent?: boolean;
@@ -27,6 +32,7 @@ export interface UserDocument {
         filter: string[];
         bannedUsers: string[];
     };
+    lastAlertsConnection?: Date;
     twitch: {
         id: string;
         login: string;

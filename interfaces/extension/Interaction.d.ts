@@ -1,3 +1,5 @@
+import { InteractionSourceType } from "./InteractionSource";
+
 export type MediaInteraction = {
     uuid: string;
     type: "sound" | "video";
@@ -26,11 +28,21 @@ export type PunishmentInteraction = {
     };
 };
 
+export type PopInteraction = {
+    uuid: string;
+    type: "pop";
+    input: {
+        popId: string;
+        position: string;
+    }
+}
+
 export type DefaultInteraction = {
     uuid: string;
     type: "";
     input: {};
+    source?: InteractionSourceType;
 };
 
-export type Interaction = TTSInteraction | MediaInteraction | PunishmentInteraction | DefaultInteraction;
+export type Interaction = TTSInteraction | MediaInteraction | PunishmentInteraction | PopInteraction | DefaultInteraction;
 export type ExtractInteraction<T extends Interaction["type"]> = Extract<Interaction["input"], { type: T }>;

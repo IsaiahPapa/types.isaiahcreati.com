@@ -5,6 +5,7 @@ import { SoundFeatureShared } from "../features/shared/Sound";
 import { FiresaleFeatureExtension } from "../features/extension/Firesale";
 import { VideoFeatureShared } from "../features/shared/Video";
 import { BoxFeatureExtension } from "../features/extension/Box";
+import { PopFeatureShared } from "../features/shared/Pops";
 
 export type ExtensionFeature =
     | TTSFeatureExtension
@@ -13,6 +14,7 @@ export type ExtensionFeature =
     | PunishmentFeatureShared
     | RandomMediaFeatureExtension
     | FiresaleFeatureExtension
-    | BoxFeatureExtension;
+    | BoxFeatureExtension
+    | PopFeatureShared;
 
 // export type ExtensionFeatureType = "tts" | "video" | "sound" | "timeout";

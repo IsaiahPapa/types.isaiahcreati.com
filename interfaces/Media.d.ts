@@ -23,4 +23,5 @@ export interface MediaListItem {
     alias: string;
     username: string;
     volume: number;
+    isSpatial?: boolean;
 }

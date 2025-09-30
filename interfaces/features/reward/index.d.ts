@@ -1,3 +1,4 @@
+import { PopFeatureShared } from "../shared/Pops";
 import { SoundFeatureShared } from "../shared/Sound";
 import { TimeoutFeatureShared } from "../shared/Timeout";
 import { TTSFeatureShared } from "../shared/TTS";
@@ -21,4 +22,5 @@ export type RewardFeatureType =
     | ChatModeFeatureReward
     | CommercialFeatureReward
     | PollFeatureReward
-    | PredictionFeatureReward;
+    | PredictionFeatureReward
+    | PopFeatureShared;
