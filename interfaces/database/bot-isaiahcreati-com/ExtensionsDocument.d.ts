@@ -29,9 +29,15 @@ export interface ExtensionsDocument {
     };
     notification?: {
         hide?: boolean;
+        sendChatMessage?: boolean;
         position: {
             x: number;
             y: number;
+        };
+        positionRegion?: "top-left" | "top-right" | "bottom-left" | "bottom-right";
+        animation?: {
+            type: "slide" | "fade";
+            easing?: string;
         };
     };
 }
