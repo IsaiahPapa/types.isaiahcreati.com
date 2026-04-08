@@ -1,4 +1,5 @@
 export interface TTSSettings {
+    modelId?: string;
     voice: string;
     charLimit: number;
     volume: number;

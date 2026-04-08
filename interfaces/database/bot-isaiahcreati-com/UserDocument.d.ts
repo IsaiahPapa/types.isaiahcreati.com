@@ -146,6 +146,9 @@ export interface UserDocument {
     tts?: {
         monthy_usage: { [MonthYear: string]: { used_chars: number } };
     };
+    media?: {
+        monthly_usage: { [MonthYear: string]: { plays: number; last_limit_message?: number } };
+    };
     welcomeOnboardingComplete?: boolean;
     extensionOnboardingComplete?: boolean;
     subscriptions?: { type: string; status: string }[];

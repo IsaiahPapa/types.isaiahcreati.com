@@ -1,4 +1,5 @@
 import ExtensionsDocument from "../database/bot-isaiahcreati-com/ExtensionsDocument";
+import RewardsDocument from "../database/bot-isaiahcreati-com/RewardsDocument";
 import { Interaction } from "../extension/Interaction";
 import { RandomMediaFeatureExtensionSettings } from "../features/extension/RandomMedia";
 import { MinecraftIntegrationFeatureSettings } from "../features/shared/Minecraft";
@@ -117,6 +118,34 @@ export interface DefaultAlertPayload {
     module: "rewards" | "extension";
 }
 
+export interface AlertPayloadRewardsNotification {
+    hide?: boolean;
+    position?: {
+        x: number;
+        y: number;
+    };
+    positionRegion?: NonNullable<RewardsDocument["alerts"]>["positionRegion"];
+    animation?: {
+        type?: "slide" | "fade";
+    };
+    skipQueue?: boolean;
+}
+
+export interface AlertPayloadRewardsInfo {
+    title?: string;
+    message?: string;
+    redeemer?: string;
+    cost?: string | number;
+    color?: string;
+    imageUrl?: string;
+    notification?: AlertPayloadRewardsNotification;
+    metadata?: {
+        streamerName?: string;
+        redeemerName?: string;
+    };
+    [key: string]: any;
+}
+
 export interface AlertPayloadRewards extends DefaultAlertPayload {
     version: string;
     module: "rewards";
@@ -128,7 +157,7 @@ export interface AlertPayloadRewards extends DefaultAlertPayload {
         | AlertPayloadPlaySound
         | AlertPayloadShowEmote
         | AlertPayloadMinecraft;
-    info: {};
+    info: AlertPayloadRewardsInfo;
 }
 export interface AlertPayloadExtension extends DefaultAlertPayload {
     version: string;
