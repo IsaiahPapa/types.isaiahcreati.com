@@ -1,5 +1,13 @@
 import { FeatureInterface } from "../../features/index";
 
+export interface VipGameSettings {
+    type: "guess" | "coinFlip";
+    guessMin?: number;
+    guessMax?: number;
+    winMessage?: string;
+    loseMessage?: string;
+}
+
 export interface VipFeatureSettings {
     mode: "add" | "remove";
     //TODO: Add a setting entry on the settings page to have people immune to VIP removal
@@ -12,6 +20,7 @@ export interface VipFeatureSettings {
     target_chatter: "";
     //How long the vip add/remove should last for. Here for later use
     duration: number;
+    game?: VipGameSettings;
 }
 
 interface ModeratorSettings {
