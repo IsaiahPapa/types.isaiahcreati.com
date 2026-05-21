@@ -11,7 +11,8 @@ interface ExtensionPubSubMessageInterface {
         | "THEME_CHANGE"
         | "MAINTENANCE"
         | "FIRESALE.START"
-        | "FIRESALE.STOP";
+        | "FIRESALE.STOP"
+        | "FIRESALE.UPDATE";
 }
 
 export interface ItemCreatePubSubMessage extends ExtensionPubSubMessageInterface {
@@ -39,12 +40,22 @@ export interface MaintenanceChangePubSubMessage extends ExtensionPubSubMessageIn
 }
 export interface FiresaleStartPubSubMessage extends ExtensionPubSubMessageInterface {
     type: "FIRESALE.START";
-    durationSeconds: number;
-    discountPercentage: number;
+    endsAt: number; // epoch seconds
+    items: { uuid: ExtensionItem["uuid"]; firesalePrice: number }[];
+    discountPercent: number;
+    startedAt: number;
 }
 
 export interface FiresaleStopPubSubMessage extends ExtensionPubSubMessageInterface {
     type: "FIRESALE.STOP";
+}
+
+export interface FiresaleUpdatePubSubMessage extends ExtensionPubSubMessageInterface {
+    type: "FIRESALE.UPDATE";
+    endsAt: number;
+    items: { uuid: ExtensionItem["uuid"]; firesalePrice: number }[];
+    discountPercent: number;
+    startedAt: number;
 }
 
 export type ExtensionPubSubMessage =
@@ -54,4 +65,5 @@ export type ExtensionPubSubMessage =
     | ThemeChangePubSubMessage
     | MaintenanceChangePubSubMessage
     | FiresaleStartPubSubMessage
-    | FiresaleStopPubSubMessage;
+    | FiresaleStopPubSubMessage
+    | FiresaleUpdatePubSubMessage;

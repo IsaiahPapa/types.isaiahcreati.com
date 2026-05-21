@@ -13,6 +13,5 @@ export interface ExtensionItem {
     allowed: AllowedRoles[];
     features: ExtensionFeature[];
     firesale_only?: boolean;
-    firesale_amount?: number;
     alertId?: string;
 }

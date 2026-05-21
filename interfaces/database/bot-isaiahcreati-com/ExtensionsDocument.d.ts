@@ -19,13 +19,14 @@ export interface ExtensionsDocument {
     
     lastEpoch?: number;
     firesale?: {
-        lastEpochSeconds?: number;
+        startedAt?: number; // epoch seconds; 0 or missing means inactive
         durationSeconds: number;
         discountPercent: number; //between 0-100
         viewerParticipationThreshold: number;
         exemptItemIds: string[];
         exemptUserIds: string[];
         exemptFeatures: Exclude<ExtensionFeature["type"], "firesale">[];
+        itemOverrides?: { [uuid: string]: { discountPercent: number } };
     };
     notification?: {
         hide?: boolean;
