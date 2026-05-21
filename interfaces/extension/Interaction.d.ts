@@ -1,3 +1,5 @@
+import { InteractionSourceType } from "./InteractionSource";
+
 export type MediaInteraction = {
     uuid: string;
     type: "sound" | "video";
@@ -30,6 +32,7 @@ export type DefaultInteraction = {
     uuid: string;
     type: "";
     input: {};
+    source?: InteractionSourceType;
 };
 
 export type Interaction = TTSInteraction | MediaInteraction | PunishmentInteraction | DefaultInteraction;
