@@ -1,6 +1,8 @@
 // Default catalogs for the Minecraft Integration extension feature.
 // Auto-applied when a streamer enables Minecraft; they can override afterwards.
 
+import { MinecraftIntegrationFeatureSettings } from "./Minecraft";
+
 export type PriceTier = "small" | "medium" | "large";
 export type MobSet = "tame" | "crazy";
 
@@ -24,7 +26,36 @@ export interface MinigameEntry {
     price: number;
 }
 
+export interface CPRewardDefinition {
+    id: string;
+    title: string;
+    cost: number;
+    type: "mob" | "taunt" | "minigame";
+    action: MinecraftIntegrationFeatureSettings;
+    isCustom: boolean;
+    enabled: boolean;
+}
+
 export interface MinecraftExtensionConfig {
+    enabled: boolean;
+    priceTier: PriceTier;
+    mobSet: MobSet;
+    extension: {
+        mobs: MobEntry[];
+        taunts: TauntEntry[];
+        minigames: MinigameEntry[];
+    };
+    channelPoints: {
+        mode: boolean;
+        rewardDefinitions: CPRewardDefinition[];
+    };
+}
+
+// Flat projection of MinecraftExtensionConfig for the extension frontend.
+// The EBS GET /api/extension response hydrates this from the integrations
+// collection — the extension frontend doesn't see channelPoints or the
+// nested `extension` sub-object, just the flat bits config.
+export interface MinecraftExtensionFlatConfig {
     enabled: boolean;
     priceTier: PriceTier;
     mobSet: MobSet;
@@ -228,4 +259,112 @@ export const MINIGAME_PRICE_TIERS: Record<PriceTier, Record<string, number>> = {
     small: { parkour: 50, tntrun: 50, dropper: 50, sumo: 75 },
     medium: { parkour: 100, tntrun: 100, dropper: 100, sumo: 125 },
     large: { parkour: 200, tntrun: 200, dropper: 200, sumo: 250 },
+};
+
+// ── Channel-point price tiers ───────────────────────────────────────────
+// CP economy is independent from bits — points are earned by watching, not
+// purchased. Prices below are based on real stream data (Small tier) scaled
+// 2x for Medium and 4x for Large. The streamer can override individual prices
+// in the dashboard table after onboarding.
+
+export const CP_MOB_PRICE_TIERS: Record<PriceTier, Record<string, number>> = {
+    small: {
+        "minecraft:silverfish": 100,
+        "minecraft:spider": 150,
+        "minecraft:zombie": 175,
+        "minecraft:skeleton": 200,
+        "minecraft:creeper": 2000,
+        "minecraft:enderman": 500,
+        "minecraft:blaze": 750,
+        "minecraft:ravager": 1500,
+        "minecraft:warden": 5000,
+        "minecraft:ender_dragon": 5000,
+        "minecraft:wither": 5000,
+        "minecraft:ghast": 3000,
+        "minecraft:evoker": 2000,
+        "minecraft:vindicator": 1500,
+        "minecraft:piglin_brute": 1750,
+    },
+    medium: {
+        "minecraft:silverfish": 200,
+        "minecraft:spider": 300,
+        "minecraft:zombie": 350,
+        "minecraft:skeleton": 400,
+        "minecraft:creeper": 4000,
+        "minecraft:enderman": 1000,
+        "minecraft:blaze": 1500,
+        "minecraft:ravager": 3000,
+        "minecraft:warden": 10000,
+        "minecraft:ender_dragon": 10000,
+        "minecraft:wither": 10000,
+        "minecraft:ghast": 6000,
+        "minecraft:evoker": 4000,
+        "minecraft:vindicator": 3000,
+        "minecraft:piglin_brute": 3500,
+    },
+    large: {
+        "minecraft:silverfish": 400,
+        "minecraft:spider": 600,
+        "minecraft:zombie": 700,
+        "minecraft:skeleton": 800,
+        "minecraft:creeper": 8000,
+        "minecraft:enderman": 2000,
+        "minecraft:blaze": 3000,
+        "minecraft:ravager": 6000,
+        "minecraft:warden": 20000,
+        "minecraft:ender_dragon": 20000,
+        "minecraft:wither": 20000,
+        "minecraft:ghast": 12000,
+        "minecraft:evoker": 8000,
+        "minecraft:vindicator": 6000,
+        "minecraft:piglin_brute": 7000,
+    },
+};
+
+export const CP_TAUNT_PRICE_TIERS: Record<PriceTier, Record<string, number>> = {
+    small: {
+        tnt: 100, punch: 50, noise: 75, drop: 75, shuffle: 100, cobweb: 100, stack_one: 100,
+        half_heart: 150, hungry: 150, break: 150, hot_potato: 175, sky: 175,
+        strike: 1000, bury: 200, blind_noise: 200, rename_chat: 200, fake_tp: 250,
+        anvil: 250, drunk: 250, fire_trail: 300, downgrade_gear: 350, curse_gear: 350,
+        chicken_rain: 500, raid: 500, gremlin: 500, anvil_rain: 600, meteor_rain: 750,
+        lucky_block: 750,
+        fov_quake: 200, fov_zoom: 200, pumpkin_view: 200, vignette_heartbeat: 200,
+        pixelate: 200, mirror: 200, fisheye: 200, crt: 200, blur: 200,
+        inverted_colors: 200, black_and_white: 200, lsd: 200, upside_down: 200,
+        rolling_camera: 200, camera_tilt: 200, dvd: 200, inverted_controls: 200,
+        mouse_drifting: 200,
+    },
+    medium: {
+        tnt: 200, punch: 100, noise: 150, drop: 150, shuffle: 200, cobweb: 200, stack_one: 200,
+        half_heart: 300, hungry: 300, break: 300, hot_potato: 350, sky: 350,
+        strike: 2000, bury: 400, blind_noise: 400, rename_chat: 400, fake_tp: 500,
+        anvil: 500, drunk: 500, fire_trail: 600, downgrade_gear: 700, curse_gear: 700,
+        chicken_rain: 1000, raid: 1000, gremlin: 1000, anvil_rain: 1200, meteor_rain: 1500,
+        lucky_block: 1500,
+        fov_quake: 400, fov_zoom: 400, pumpkin_view: 400, vignette_heartbeat: 400,
+        pixelate: 400, mirror: 400, fisheye: 400, crt: 400, blur: 400,
+        inverted_colors: 400, black_and_white: 400, lsd: 400, upside_down: 400,
+        rolling_camera: 400, camera_tilt: 400, dvd: 400, inverted_controls: 400,
+        mouse_drifting: 400,
+    },
+    large: {
+        tnt: 400, punch: 200, noise: 300, drop: 300, shuffle: 400, cobweb: 400, stack_one: 400,
+        half_heart: 600, hungry: 600, break: 600, hot_potato: 700, sky: 700,
+        strike: 4000, bury: 800, blind_noise: 800, rename_chat: 800, fake_tp: 1000,
+        anvil: 1000, drunk: 1000, fire_trail: 1200, downgrade_gear: 1400, curse_gear: 1400,
+        chicken_rain: 2000, raid: 2000, gremlin: 2000, anvil_rain: 2400, meteor_rain: 3000,
+        lucky_block: 3000,
+        fov_quake: 800, fov_zoom: 800, pumpkin_view: 800, vignette_heartbeat: 800,
+        pixelate: 800, mirror: 800, fisheye: 800, crt: 800, blur: 800,
+        inverted_colors: 800, black_and_white: 800, lsd: 800, upside_down: 800,
+        rolling_camera: 800, camera_tilt: 800, dvd: 800, inverted_controls: 800,
+        mouse_drifting: 800,
+    },
+};
+
+export const CP_MINIGAME_PRICE_TIERS: Record<PriceTier, Record<string, number>> = {
+    small: { parkour: 1000, tntrun: 1000, dropper: 1000, sumo: 1250 },
+    medium: { parkour: 2000, tntrun: 2000, dropper: 2000, sumo: 2500 },
+    large: { parkour: 4000, tntrun: 4000, dropper: 4000, sumo: 5000 },
 };

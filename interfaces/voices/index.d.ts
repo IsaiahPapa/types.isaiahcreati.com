@@ -10,9 +10,18 @@ export type PollyVoice = {
     messages_generated?: number;
 };
 
+export type VoiceProvider = "twitch" | "kick";
+
 export type AiVoiceSchema = {
     uuid?: string;
+    
+    // Legacy format (for backward compatibility with old documents)
     twitchId?: string;
+    owner?: {
+        uuid4: string;
+        provider: VoiceProvider;
+    }
+    
     type: "ai";
     model_id: string;
     name: string;
@@ -24,7 +33,6 @@ export type AiVoiceSchema = {
 
     ids_allowed_to_fork: string[];
     messages_generated: number;
-    //Featured on voices page
     featured: boolean;
     audio_sample_url?: string | undefined;
     language: string;
@@ -43,7 +51,8 @@ export type AiVoiceSchema = {
     
     forked_from?: {
         model_id: string;
-        twitchId: string;
+        owner_uuid4?: string; // Added for easier querying of fork ownership
+        twitchId?: string;
         fork_date: Date;
     };
     fork_count?: number;

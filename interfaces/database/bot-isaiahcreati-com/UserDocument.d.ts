@@ -74,6 +74,17 @@ export interface UserFlags {
         hasTestedSound?: boolean;
         ttsRewardId?: ChannelPointReward["id"];
     };
+    onboardingMinecraft?: {
+        status?: OnboardingStatus;
+        first_opened_at?: Date;
+        last_opened_at?: Date;
+        completed_at?: Date;
+        selectedTier?: "small" | "medium" | "large";
+        enabledExtension?: boolean;
+        skipped_steps?: {
+            extension_upsell?: StepSkipInfo;
+        };
+    };
 }
 
 export interface UserDocument {
