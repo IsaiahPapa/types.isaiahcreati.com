@@ -1,4 +1,5 @@
 import { InteractionSourceType } from "./InteractionSource";
+import { MinecraftIntegrationFeatureSettings } from "../features/shared/Minecraft";
 
 export type MediaInteraction = {
     uuid: string;
@@ -28,6 +29,13 @@ export type PunishmentInteraction = {
     };
 };
 
+export type MinecraftInteraction = {
+    uuid: string;
+    type: "minecraft";
+    input: MinecraftIntegrationFeatureSettings;
+    source?: InteractionSourceType;
+};
+
 export type DefaultInteraction = {
     uuid: string;
     type: "";
@@ -35,5 +43,10 @@ export type DefaultInteraction = {
     source?: InteractionSourceType;
 };
 
-export type Interaction = TTSInteraction | MediaInteraction | PunishmentInteraction | DefaultInteraction;
+export type Interaction =
+    | TTSInteraction
+    | MediaInteraction
+    | PunishmentInteraction
+    | MinecraftInteraction
+    | DefaultInteraction;
 export type ExtractInteraction<T extends Interaction["type"]> = Extract<Interaction["input"], { type: T }>;

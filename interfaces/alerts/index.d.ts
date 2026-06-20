@@ -168,7 +168,8 @@ export interface AlertPayloadExtension extends DefaultAlertPayload {
         | AlertPayloadVideo
         | AlertPayloadPunishment
         | AlertPayloadRandomMedia
-        | AlertPayloadFiresale;
+        | AlertPayloadFiresale
+        | AlertPayloadMinecraft;
     info: {
         username: string;
         amount: number;

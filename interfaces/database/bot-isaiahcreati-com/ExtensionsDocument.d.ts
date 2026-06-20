@@ -1,6 +1,7 @@
 import { SettingPosition } from "../../alerts/index";
 import { ExtensionItem } from "../../extension/ExtensionItem";
 import { ExtensionFeature } from "../../extension/Feature";
+import { MinecraftExtensionConfig } from "../../features/shared/MinecraftDefaults";
 type ExtensionThemes = "blue" | "red" | "orange" | "purple" | "green";
 
 export type PunishedChatter = {
@@ -16,7 +17,7 @@ export interface ExtensionsDocument {
     sortOrder?: ExtensionItem["uuid"][];
     whitelist?: string[];
     cooldown?: number;
-    
+    minecraft?: MinecraftExtensionConfig;
     lastEpoch?: number;
     firesale?: {
         startedAt?: number; // epoch seconds; 0 or missing means inactive

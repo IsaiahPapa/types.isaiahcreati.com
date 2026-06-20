@@ -1,6 +1,13 @@
 import { FeatureInterface } from "../index";
+import { MobModifier } from "./MobModifier";
 
 interface GiveDetail {
+    type: "item";
+    itemId: string;
+    amount: number;
+}
+
+interface TakeDetail {
     type: "item";
     itemId: string;
     amount: number;
@@ -17,15 +24,31 @@ interface SpawnMobDetail {
     type: "mob";
     mobId: string;
     amount: number;
+    modifiers?: MobModifier[];
 }
 
 interface TauntDetail {
     tauntId: string;
 }
 
+interface PlaceBlockDetail {
+    blockId: string;
+    position: "at" | "above" | "random";
+    primed?: boolean;
+}
+
+interface PlaySoundDetail {
+    soundId: string;
+}
+
 interface Give {
     action: "give";
     detail: GiveDetail;
+}
+
+interface Take {
+    action: "take";
+    detail: TakeDetail;
 }
 
 interface Effect {
@@ -43,4 +66,21 @@ interface Taunt {
     detail: TauntDetail;
 }
 
-export type MinecraftIntegrationFeatureSettings = Give | Effect | SpawnMob | Taunt;
+interface PlaceBlock {
+    action: "placeblock";
+    detail: PlaceBlockDetail;
+}
+
+interface PlaySound {
+    action: "playsound";
+    detail: PlaySoundDetail;
+}
+
+export type MinecraftIntegrationFeatureSettings =
+    | Give
+    | Take
+    | Effect
+    | SpawnMob
+    | Taunt
+    | PlaceBlock
+    | PlaySound;
