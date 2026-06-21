@@ -6,7 +6,7 @@
 import { MinecraftIntegrationFeatureSettings } from "./Minecraft";
 
 export type PriceTier = "small" | "medium" | "large";
-export type MobSet = "tame" | "crazy";
+export type MobSet = "tame" | "normal" | "crazy";
 
 export interface MobEntry {
     mobId: string;
