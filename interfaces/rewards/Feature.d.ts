@@ -1,4 +1,5 @@
 import { MinecraftIntegrationFeatureSettings } from "../features/shared/Minecraft";
+import { ThrowItemSettings } from "../taunts/index";
 import { PunishmentFeatureShared } from "../features/shared/Punishment";
 import { SoundFeatureShared } from "../features/shared/Sound";
 import { TimeoutFeatureShared } from "../features/shared/Timeout";
@@ -44,6 +45,7 @@ import { WheelSpinnerSettings } from "./settings/WheelSpinner";
 // export type PollFeature = Feature.PollFeature;
 
 export type Feature =
+    | ThrowItemFeature
     | TTSFeatureShared
     | SoundFeatureShared
     | VideoFeatureShared
@@ -86,6 +88,13 @@ export interface ShowEmoteFeature {
     type: "showemote";
     settings: ShowEmoteSettings;
 }
+export interface ThrowItemFeature {
+    id: string;
+    type: "throwItem";
+    settings: ThrowItemSettings;
+}
+/** Canonical name for the taunt reward. Stored type key remains `throwItem`. */
+export type TauntFeature = ThrowItemFeature;
 export interface TTSFeature {
     id: string;
     type: "tts";
