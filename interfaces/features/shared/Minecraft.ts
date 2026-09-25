@@ -41,6 +41,11 @@ interface PlaySoundDetail {
     soundId: string;
 }
 
+interface BuffDetail {
+    buffId: string;
+    duration: number;
+}
+
 interface Give {
     action: "give";
     detail: GiveDetail;
@@ -76,6 +81,11 @@ interface PlaySound {
     detail: PlaySoundDetail;
 }
 
+interface Buff {
+    action: "buff";
+    detail: BuffDetail;
+}
+
 export type MinecraftIntegrationFeatureSettings =
     | Give
     | Take
@@ -83,4 +93,5 @@ export type MinecraftIntegrationFeatureSettings =
     | SpawnMob
     | Taunt
     | PlaceBlock
-    | PlaySound;
+    | PlaySound
+    | Buff;

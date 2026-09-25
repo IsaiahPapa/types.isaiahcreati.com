@@ -5,6 +5,7 @@ export interface IntegrationDocument {
     uuid: string;
     twitchId?: string;
     minecraft: MinecraftExtensionConfig;
+    integrations?: Record<string, unknown>;
 }
 
 export default IntegrationDocument;

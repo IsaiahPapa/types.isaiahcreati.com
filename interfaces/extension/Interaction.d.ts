@@ -36,6 +36,14 @@ export type MinecraftInteraction = {
     source?: InteractionSourceType;
 };
 
+export type IntegrationInteraction = {
+    uuid: string;
+    type: "integration";
+    integration: string;
+    input: unknown;
+    source?: InteractionSourceType;
+};
+
 export type DefaultInteraction = {
     uuid: string;
     type: "";
@@ -48,5 +56,6 @@ export type Interaction =
     | MediaInteraction
     | PunishmentInteraction
     | MinecraftInteraction
+    | IntegrationInteraction
     | DefaultInteraction;
 export type ExtractInteraction<T extends Interaction["type"]> = Extract<Interaction["input"], { type: T }>;

@@ -14,4 +14,7 @@ export interface ExtensionItem {
     features: ExtensionFeature[];
     firesale_only?: boolean;
     alertId?: string;
+    categoryId?: string;
+    integration?: string;
+    kind?: "category";
 }

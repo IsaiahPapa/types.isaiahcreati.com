@@ -4,7 +4,8 @@ export interface ModifierCatalogEntry {
     id: string;
     displayName: string;
     cost: number;
-    appliesTo: ("integration:minecraft")[];
+    appliesTo: string[];
+    appliesToMobs?: string[];
     modifier: MobModifier;
     exclusiveWith?: string[];
 }
