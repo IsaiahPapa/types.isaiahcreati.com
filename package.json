@@ -2,7 +2,7 @@
   "name": "types.isaiahcreati.com",
   "scripts": {
     "tsc": "tsc",
-    "test": "tsc --noEmit --pretty --target es5"
+    "test": "tsc --noEmit --pretty"
   },
   "devDependencies": {
     "husky": "^8.0.1",

@@ -7,6 +7,7 @@ import { PunishmentFeatureSharedSettings } from "../features/shared/Punishment";
 import { MediaListItem } from "../Media";
 import { PlaySoundSettingsDepreciated } from "../rewards/settings/PlaySound";
 import { PlayVideoSettingsDepreciated } from "../rewards/settings/PlayVideo";
+import type { TauntDelivery } from "../taunts/index";
 
 export interface SettingPosition {
     x: string; //px
@@ -111,6 +112,11 @@ export interface AlertPayloadMinecraft {
     settings: MinecraftIntegrationFeatureSettings
 }
 
+export interface AlertPayloadTaunt {
+    type: "taunt";
+    settings: TauntDelivery;
+}
+
 //Actual payloads
 
 export interface DefaultAlertPayload {
@@ -156,7 +162,8 @@ export interface AlertPayloadRewards extends DefaultAlertPayload {
         | AlertPayloadPlayVideo
         | AlertPayloadPlaySound
         | AlertPayloadShowEmote
-        | AlertPayloadMinecraft;
+        | AlertPayloadMinecraft
+        | AlertPayloadTaunt;
     info: AlertPayloadRewardsInfo;
 }
 export interface AlertPayloadExtension extends DefaultAlertPayload {
