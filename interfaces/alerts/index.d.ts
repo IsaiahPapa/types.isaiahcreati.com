@@ -120,6 +120,7 @@ export interface AlertPayloadTaunt {
 //Actual payloads
 
 export interface DefaultAlertPayload {
+    diagnosticId?: string;
     version: string;
     module: "rewards" | "extension";
 }
