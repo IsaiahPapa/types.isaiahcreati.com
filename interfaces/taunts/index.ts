@@ -185,12 +185,13 @@ export const throwRewardDefaults = (settings: ThrowItemSettings) => {
     const fixed = selection.type === "fixed"
         ? throwables.find(({ id }) => id === selection.item)?.name.toLowerCase()
         : undefined;
-    // A short random pool is named outright, so viewers know what they are paying for.
-    const pool = selection.type === "random" && settings.availableItems.type === "selected" && names.length <= 3
+    // A short random pool is named outright, so viewers know what they are paying
+    // for: up to three items in the title, up to five in the description.
+    const pool = selection.type === "random" && settings.availableItems.type === "selected" && names.length <= 5
         ? listWithArticle(names)
         : undefined;
     const thrown = fixed ? withArticle(fixed) : pool;
-    const namedTitle = thrown ? `Throw ${thrown} at me` : "";
+    const namedTitle = fixed || (pool && names.length <= 3) ? `Throw ${thrown} at me` : "";
     const lands = "Lands randomly anywhere on screen.";
     let prompt: string;
     if (selection.type === "text") {
