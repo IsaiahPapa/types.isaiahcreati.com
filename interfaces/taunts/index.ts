@@ -166,26 +166,46 @@ export const randomThrowTarget = (
     v: random(),
 });
 
+/** Twitch caps reward titles at 45 characters. */
+const MAX_REWARD_TITLE_LENGTH = 45;
+
+const withArticle = (name: string): string => `${/^[aeiou]/.test(name) ? "an" : "a"} ${name}`;
+
+/** "an egg", "an egg or tomato", "an egg, tomato or rubber duck". */
+const listWithArticle = (names: string[]): string => {
+    const [first, ...rest] = names;
+    const head = [withArticle(first), ...rest.slice(0, -1)].join(", ");
+    return rest.length ? `${head} or ${rest[rest.length - 1]}` : head;
+};
+
 export const throwRewardDefaults = (settings: ThrowItemSettings) => {
     const selection = settings.itemSelection;
-    const item = selection.type === "fixed"
-        ? throwables.find(({ id }) => id === selection.item)
+    const names = allowedThrowItems(settings.availableItems)
+        .map((id) => throwables.find((item) => item.id === id)!.name.toLowerCase());
+    const fixed = selection.type === "fixed"
+        ? throwables.find(({ id }) => id === selection.item)?.name.toLowerCase()
         : undefined;
-    const name = item?.name.toLowerCase();
-    const examples = allowedThrowItems(settings.availableItems)
-        .slice(0, 3)
-        .map((id) => throwables.find((item) => item.id === id)!.name.toLowerCase())
-        .join(", ");
+    // A short random pool is named outright, so viewers know what they are paying for.
+    const pool = selection.type === "random" && settings.availableItems.type === "selected" && names.length <= 3
+        ? listWithArticle(names)
+        : undefined;
+    const thrown = fixed ? withArticle(fixed) : pool;
+    const namedTitle = thrown ? `Throw ${thrown} at me` : "";
+    const lands = "Lands randomly anywhere on screen.";
+    let prompt: string;
+    if (selection.type === "text") {
+        prompt = `Type an item like ${names.slice(0, 3).join(", ")}. Anything else throws a random item. ${lands}`;
+    } else if (thrown) {
+        prompt = `Throws ${thrown}. ${lands}`;
+    } else if (settings.availableItems.type === "selected") {
+        prompt = `Throws a random item: ${names.slice(0, 3).join(", ")} and more. ${lands}`;
+    } else {
+        prompt = `Throws a random item. ${lands}`;
+    }
     return {
-        title: name
-            ? `Throw ${/^[aeiou]/.test(name) ? "an" : "a"} ${name} at me`
-            : "Throw something at me",
+        title: namedTitle && namedTitle.length <= MAX_REWARD_TITLE_LENGTH ? namedTitle : "Throw something at me",
         cost: 500,
         isUserInputRequired: selection.type === "text",
-        prompt: (
-            selection.type === "text"
-                ? `Type an item like ${examples}. Anything else throws a random item. Lands randomly anywhere on screen.`
-                : `${name ? `Throws ${name}` : "Throws a random available item"}. Lands randomly anywhere on screen.`
-        ).slice(0, 200),
+        prompt: prompt.slice(0, 200),
     };
 };
