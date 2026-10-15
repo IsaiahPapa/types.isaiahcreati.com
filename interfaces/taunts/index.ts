@@ -166,6 +166,13 @@ export const randomThrowTarget = (
     v: random(),
 });
 
+/**
+ * The socket room taunt deliveries go to. Only overlays that understand taunts
+ * join it, so a browser source still running an older overlay never receives a
+ * throw (which it would otherwise queue as a blank alert, delaying real ones).
+ */
+export const tauntDeliveryRoom = (alertKey: string): string => `${alertKey}:taunts`;
+
 /** Twitch caps reward titles at 45 characters. */
 const MAX_REWARD_TITLE_LENGTH = 45;
 
