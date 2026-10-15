@@ -95,6 +95,18 @@ export const foods = [
         icon: "🥚",
         description: "Cracked shell, a small yolk and subtle egg white.",
     },
+    {
+        id: "pie",
+        name: "Cream pie",
+        icon: "🥧",
+        description: "A cream pie, straight to the face.",
+    },
+    {
+        id: "water_balloon",
+        name: "Water balloon",
+        icon: "🎈",
+        description: "Bursts into a splash of water.",
+    },
 ] as const;
 
 export type FoodId = (typeof foods)[number]["id"];
@@ -156,4 +168,6 @@ export const throwableAliases: Partial<Record<ThrowableId, readonly string[]>> =
     eggplant: ["aubergine"],
     pepper: ["bell pepper"],
     pumpkin_italian: ["italian pumpkin"],
+    pie: ["pie", "custard pie", "pie in the face"],
+    water_balloon: ["balloon", "waterballoon", "water"],
 };
