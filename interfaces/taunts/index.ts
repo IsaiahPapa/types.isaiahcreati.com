@@ -31,6 +31,8 @@ export type ThrowAdmission =
     | "accepted"
     | "duplicate"
     | "invalid"
+    | "expired"
+    | "error"
     | "unknown-effect"
     | "paused"
     | "busy"
